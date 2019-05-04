@@ -39,7 +39,7 @@ namespace std
                 SqlParameter parameter = new SqlParameter("@username", Usernam);
                 SqlParameter parameter2 = new SqlParameter("@userpassword", Pass);
 
-                sqlcommand.Parameters.Add(parameter);
+                sqlcommand.Parameters.Add(parameter); 
                 sqlcommand.Parameters.Add(parameter2);
                 
                

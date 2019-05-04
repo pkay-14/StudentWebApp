@@ -1,0 +1,13 @@
+﻿@using stdblog.Models
+@{
+    ViewBag.Title = "Contact";
+}
+
+@using (var ctx = new studentDBase())
+{
+    foreach (var item in ctx.blogposts)
+    {
+        <h3>contact @item.id</h3>
+    }
+}
+

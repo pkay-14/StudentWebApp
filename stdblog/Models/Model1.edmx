@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="studentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="blogposts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="author" Type="nvarchar" MaxLength="50" />
+          <Property Name="datemodified" Type="datetime" />
+          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="postimage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="profileimg">
+          <Key>
+            <PropertyRef Name="pictureid" />
+          </Key>
+          <Property Name="pictureid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="profilepic" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblStudents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Last Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="User  Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Function Name="addposts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="posttitle" Type="nvarchar" Mode="In" />
+          <Parameter Name="postauthor" Type="nvarchar" Mode="In" />
+          <Parameter Name="datemodified" Type="datetime" Mode="In" />
+          <Parameter Name="postcontent" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="postimage" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="profilepic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="profile" Type="varchar(max)" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="searchuser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="searchvalue" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="StdProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FN" Type="nvarchar" Mode="In" />
+          <Parameter Name="LN" Type="nvarchar" Mode="In" />
+          <Parameter Name="UN" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pass" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="updateimgprocedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="profilepic" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uploadprocedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="validator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="userpassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="studentDBModelStoreContainer">
+          <EntitySet Name="blogposts" EntityType="Self.blogposts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="profileimg" EntityType="Self.profileimg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudents" EntityType="Self.tblStudents" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="studentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="blogpost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datemodified" Type="DateTime" Precision="3" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="postimage" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="profileimg">
+          <Key>
+            <PropertyRef Name="pictureid" />
+          </Key>
+          <Property Name="pictureid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="profilepic" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="User__Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="studentDBase" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="blogposts" EntityType="Self.blogpost" />
+          <EntitySet Name="profileimgs" EntityType="Self.profileimg" />
+          <EntitySet Name="tblStudents" EntityType="Self.tblStudent" />
+          <FunctionImport Name="addposts">
+            <Parameter Name="posttitle" Mode="In" Type="String" />
+            <Parameter Name="postauthor" Mode="In" Type="String" />
+            <Parameter Name="datemodified" Mode="In" Type="DateTime" />
+            <Parameter Name="postcontent" Mode="In" Type="String" />
+            <Parameter Name="postimage" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="profilepic">
+            <Parameter Name="profile" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="searchuser" ReturnType="Collection(studentDBModel.searchuser_Result)">
+            <Parameter Name="searchvalue" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="StdProcedure">
+            <Parameter Name="FN" Mode="In" Type="String" />
+            <Parameter Name="LN" Mode="In" Type="String" />
+            <Parameter Name="UN" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Pass" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="updateimgprocedure">
+            <Parameter Name="profilepic" Mode="In" Type="Binary" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uploadprocedure" ReturnType="Collection(Binary)">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="validator" ReturnType="Collection(Int32)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="userpassword" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="searchuser_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="First_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Last_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="User__Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="studentDBModelStoreContainer" CdmEntityContainer="studentDBase">
+          <EntitySetMapping Name="blogposts">
+            <EntityTypeMapping TypeName="studentDBModel.blogpost">
+              <MappingFragment StoreEntitySet="blogposts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="datemodified" ColumnName="datemodified" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="postimage" ColumnName="postimage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profileimgs">
+            <EntityTypeMapping TypeName="studentDBModel.profileimg">
+              <MappingFragment StoreEntitySet="profileimg">
+                <ScalarProperty Name="pictureid" ColumnName="pictureid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="profilepic" ColumnName="profilepic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudents">
+            <EntityTypeMapping TypeName="studentDBModel.tblStudent">
+              <MappingFragment StoreEntitySet="tblStudents">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="User__Name" ColumnName="User  Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="addposts" FunctionName="studentDBModel.Store.addposts" />
+          <FunctionImportMapping FunctionImportName="profilepic" FunctionName="studentDBModel.Store.profilepic" />
+          <FunctionImportMapping FunctionImportName="searchuser" FunctionName="studentDBModel.Store.searchuser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="studentDBModel.searchuser_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="User__Name" ColumnName="User  Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StdProcedure" FunctionName="studentDBModel.Store.StdProcedure" />
+          <FunctionImportMapping FunctionImportName="updateimgprocedure" FunctionName="studentDBModel.Store.updateimgprocedure" />
+          <FunctionImportMapping FunctionImportName="uploadprocedure" FunctionName="studentDBModel.Store.uploadprocedure" />
+          <FunctionImportMapping FunctionImportName="validator" FunctionName="studentDBModel.Store.validator" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

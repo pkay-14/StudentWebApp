@@ -1,0 +1,28 @@
+﻿@using stdblog.Models
+@{
+                /**/
+
+                ViewBag.Title = "showblog";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (var ctx = new studentDBase())
+{
+
+    foreach (var blog in ctx.blogposts)
+    {
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            @Html.ActionLink(blog.author, "Home")
+            
+            <small class="text-muted"> @blog.datemodified </small>
+        </div>
+        <h2><a class="article-title" href="#"> @blog.title</a></h2>
+        <p class="article-content"> @blog.content </p>
+    </div>
+</article>
+    }
+}
+
+
