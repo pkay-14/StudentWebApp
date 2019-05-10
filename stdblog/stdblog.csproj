@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Home.cs" />
     <Compile Include="Models\LoginRegisterVM.cs" />
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\Model1.Context.cs">
@@ -220,10 +221,10 @@
     <Content Include="Views\Blog\Home.cshtml" />
     <Content Include="Views\Blog\Contact.cshtml" />
     <Content Include="Views\Shared\_Mater.cshtml" />
-    <Content Include="Views\Account\Home.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoginRegister.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Home.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

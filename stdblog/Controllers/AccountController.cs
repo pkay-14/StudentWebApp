@@ -1,6 +1,8 @@
 ﻿using stdblog.Models;
 using System.Web.Mvc;
 
+
+
 namespace stdblog.Controllers
 {
     public class AccountController : Controller
@@ -15,29 +17,30 @@ namespace stdblog.Controllers
         {
             //flags that you are using Login Action
 
-            model.IsActionLogin();
+            //model.IsActionLogin();
             //process your login logic here
             return View(model);
 
         }
 
         [HttpPost]
-    [AllowAnonymous]
-    [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         [Route("Account/Login")]
         public ActionResult Login(LoginRegisterVM model, string sReturnURL)
-    {
+        {
             //flags that you are using Login Action
 
             model.IsActionLogin();
             //process your login logic here
-            if (Request.IsAuthenticated)
+            if (ModelState.IsValid)
             {
+               
                 return View("Home");
             }
-           else return View(model);
+            else return View(model);
 
-    }
+         }
 
         [HttpPost]
         [AllowAnonymous]
@@ -49,12 +52,12 @@ namespace stdblog.Controllers
 
             model.IsActionRegister();
             //process your login logic here
-            if (Request.IsAuthenticated)
+            if (ModelState.IsValid)
             {
                 return View("Home");
 
             }
-            return View(model);
+           else return View(model);
 
         }
 

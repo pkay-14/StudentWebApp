@@ -43,8 +43,9 @@ namespace stdblog.Models
             [Required]
             [StringLength(100)]
             public string Country { get; set; }
-
         
-    
-}
+
+
+
+    }
 }

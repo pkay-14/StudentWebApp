@@ -14,5 +14,6 @@ namespace stdblog.Models
         [Required]
         [StringLength(100)]
         public string Password { get; set; }
+       
     }
 }

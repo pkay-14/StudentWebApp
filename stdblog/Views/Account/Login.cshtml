@@ -1,134 +1,42 @@
 ﻿@*@model stdblog.Models.LoginVM*@
-
+@model stdblog.Models.LoginRegisterVM
 
 @{
     ViewBag.Title = "Login";
 }
 
 <h2>Login</h2>
+@{ bool bLoginCallBack = Model.bIsActionLogin;
+    bool bRegisterCallBack = Model.bIsActionRegister; }
 
-@model stdblog.Models.LoginRegisterVM
-@{
-    /*Place this view logic in both the Login.cshtml and Register.cshtml. Now use the last Action called as a Boolean check against your validation messages, so unnecessary validation messages don't show up.*/
-    bool bLoginCallBack = Model.bIsActionLogin;
-    bool bRegisterCallBack = Model.bIsActionRegister;
-    MvcHtmlString htmlIcoWarn = new MvcHtmlString(" font awesome icon here ");
-    MvcHtmlString htmlIcoHand = new MvcHtmlString(" font awesome icon here ");
-}
-
-@using (Html.BeginForm("Login", "Account", new { sReturnURL = Model.sReturnUrl }))
-{
-    @Html.AntiForgeryToken()
-    if (bLoginCallBack)
-    {
-        MvcHtmlString htmlLoginSummary = Html.ValidationSummary(true);
-        if (!htmlLoginSummary.ToHtmlString().Contains("display:none"))
-        {
-            @:@(htmlIcoWarn)@(htmlLoginSummary)
-        }
-    }
-    @Html.LabelFor(m => m.loginvm.Username)
-    @Html.TextBoxFor(m => m.loginvm.Username, new { @placeholder = "Email" })
-    if (bLoginCallBack)
-    {
-        MvcHtmlString htmlLoginUsername = Html.ValidationMessageFor(m => m.loginvm.Username);
-        if (!htmlLoginUsername.ToHtmlString().Contains("field-validation-valid"))
-        {
-            @:@(htmlIcoHand) @(htmlLoginUsername)
-        }
-    }
-    @Html.LabelFor(m => m.loginvm.Password)
-    @Html.PasswordFor(m => m.loginvm.Password, new { @placeholder = "Password" })
-    if (bLoginCallBack)
-    {
-        MvcHtmlString htmlLoginPassword = Html.ValidationMessageFor(m => m.loginvm.Password);
-        if (!htmlLoginPassword.ToHtmlString().Contains("field-validation-valid"))
-        {
-            @:@(htmlIcoHand) @(htmlLoginPassword)
-        }
-    }
-
-    <button type="submit" class="btn btn-default">Login</button>
-}
-@using (Html.BeginForm("Register", "Account", new { sReturnURL = Model.sReturnUrl }))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    if (bRegisterCallBack)
-    {
-        MvcHtmlString htmlRegisterSummary = Html.ValidationSummary(true);
-        if (!htmlRegisterSummary.ToHtmlString().Contains("display:none"))
-        {
-            @:@(htmlIcoWarn)@(htmlRegisterSummary)
-        }
-    }
-    @Html.LabelFor(m => m.registervm.Username)
-    @Html.TextBoxFor(m => m.registervm.Username, new { @placeholder = "Email" })
-    if (bRegisterCallBack)
-    {
-        MvcHtmlString htmlRegisterUsername = Html.ValidationMessageFor(m => m.registervm.Username);
-        if (!htmlRegisterUsername.ToHtmlString().Contains("field-validation-valid"))
-        {
-            @:@(htmlIcoHand) @(htmlRegisterUsername)
-        }
-    }
-    @Html.LabelFor(m => m.registervm.Password)
-    @Html.PasswordFor(m => m.registervm.Password, new { @placeholder = "Password" })
-    if (bRegisterCallBack)
-    {
-        MvcHtmlString htmlRegisterPassword = Html.ValidationMessageFor(m => m.registervm.Password);
-        if (!htmlRegisterPassword.ToHtmlString().Contains("field-validation-valid"))
-        {
-            @:@(htmlIcoHand) @(htmlRegisterPassword)
-        }
-    }
-
-
-    <button type="submit" class="btn btn-default">Signup</button>
-}
-
-
-
-
-
-@*@{
-        ViewBag.Title = "Login";
-    }
-
-    <h2>Login</h2>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>LoginVM</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.loginvm.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.loginvm.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.loginvm.Username, "", new { @class = "text-danger" })
             </div>
         </div>
-    }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.loginvm.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.loginvm.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.loginvm.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
