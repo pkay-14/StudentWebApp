@@ -20,7 +20,7 @@
         <div>
             <div style="position: absolute; z-index: 1;" id="layer1">
                 <div class="modal-body" style="margin: 30px 0px 0px 400px;">
-                    <div class="container">
+                    <div class="container ">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
@@ -48,16 +48,15 @@
                                     </div>
                                 </div>
 
-                                <div class="Col-lg-6" style="padding: 5px 0px 5px 0px">
-                                    <asp:Button runat="server" Width="250px" ID="btnlogin" Text="Login" CssClass=" btn btn-success" OnClick="btnlogin_Click"></asp:Button>
-
+                                <div class="Col-lg-6" style="padding: 50px 0px 0px 0px">
+                                    <asp:Button runat="server" width="235" ID="btnlogin" Text="Login" CssClass="btn  btn-success" OnClick="btnlogin_Click"></asp:Button>
                                 </div>
-                                <button type="submit" class="btn btn-warning btn-block ">Forgot Login</button>
-
+                                 
                             </div>
+                            
                             <div class="col-lg-2">
                                 <div>
-                                    <asp:Label ID="lblmessage" runat="server" Text="label"></asp:Label>
+                                    <asp:Label ID="lblmessage" runat="server" ></asp:Label>
                                 </div>
 
 
@@ -65,17 +64,40 @@
                         </div>
                     </div>
 
-                </div>
 
 
-            </div>
+                    
+                     <div class=" container col-lg-12"">
+                         <div class="row">
 
-        </div>
-        <div style="float: right; padding-right: 100px">
-            <button class="btn+ btn-primary btn-block" type="button">
+                       
+                         <div class="col-lg-6"  style="padding: 100px 0px 100px 0px">
+                              <button type="submit" class="btn btn-warning btn-sm ">Forgot Login</button>
+                         </div>
+                      
+                     
+
+                 <div  class="col-lg-6" style="padding: 100px 0px 0px 50px">
+                               <button class="btn btn-primary btn-sm" type="button">
                 <span class=" glyphicon glyphicon-user"></span>Register now for free
              <a href="Login.aspx">
             </button>
+                 </div>
+               
+                    </div>
+                     </div>
+                </div>
+                
+                     
+
+
+            </div>
+            
+        </div>
+        <div style="float: right; padding-right: 100px">
+            
+
+            
         </div>
     </form>
     <script src="Js/Jquery-3.1.1.min.Js"></script>
