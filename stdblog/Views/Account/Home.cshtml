@@ -1,13 +1,64 @@
 ﻿@model stdblog.Models.Home
 
 @{
+
+
     ViewBag.Title = "Home";
+    Layout = "~/Views/sidebar/sidebarLayout.cshtml";
 }
+    <body>
+        @{Html.RenderAction("Sidebar", "sidebar");}
 
-<h2>HomePage</h2>
+    </body>
+
+
+@*<conainer class="col-lg-12">
+    <row>
 
 
 
-<div>
-    @Html.ActionLink("Back to Login", "LoginRegister")
-</div>
+        <div class="navbar navbar-inverse  navbar-fixed-top ">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Student Blog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("P-kay", "About")</li>
+                        <li>@Html.ActionLink("Home", "Home")</li>
+                        <li>@Html.ActionLink("Logout", "LoginRegister")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </row>
+</conainer>*@
+
+@* <body style="text-align:center; background-color:lightgray;">
+
+                @*<h3>OK..........................</h3>
+
+    <div>
+                    <p>
+                        ojogjfojgofjohhgjhjfgfhfusgfnhknnknsnfksnfndjgnjjknkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjffd
+                    </p>
+                    <p>ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppoo</p>
+                </div>
+            </body>
+
+        </row>
+        </conainer>
+    </div>
+                   <div class="col-lg-3">
+                       @{Html.RenderAction("Sidebar", "Account");}
+
+                   </div>*@
+@*</row>
+
+    </conainer>*@
+

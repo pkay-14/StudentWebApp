@@ -1,43 +1,13 @@
-﻿/*body {
-    padding-top: 0px;
-    padding-bottom: 0px;
-
-}*/
-
-/* Set padding to keep content from hitting the edges 
-/*.body-content {
-    padding-left: 15px;
-    padding-right: 15px;*/
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    /*white-space: normal;
-}*/
-    /* Set width on the form input elements since they're 100% wide by default */
-    /*input,
-select,
-textarea {
-    max-width: 280px;
-
-
-}*/ */
-        
-        
- @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-    body
-
-{
-    padding-top: 200px;
+﻿@import "https://fonts.googleapis.com/css?family=poppins:300,400,500,600,700";
+body {
+    padding-top: 100px;
     padding-bottom: 20px;
-    font-family: 'Poppins', sans-serif;
-    background-color: white /*#fafafa*/;
+    font-family: 'poppins', sans-serif;
+    background-color: white #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'poppins', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -53,6 +23,20 @@ a:focus {
 }
 
 .navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    padding-top:20px;
+    margin: 0;
+    overflow: hidden;
+}
+navbar2 {
     padding: 15px 10px;
     background: #fff;
     border: none;
@@ -78,35 +62,39 @@ a:focus {
 }
 
 .navbar2 {
-    padding: 15px 10px;
+  
+  
     background: #fff;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    height: 5%;
+   
+  
 }
+    .navbar2:hover {
+       background-color:crimson
+    }
 
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
+    .navbar2-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+        position: fixed;
+    }
+#navbarlist{
+    display:inline-block;
+    color:green;
+    width:50px;
 }
-
-#navbarlist {
-    display: inline-block;
-    color: green;
-    width: 50px;
-}
-
 #nav li {
     float: right;
     margin: 20px;
     background-color: red;
     padding: 8px;
     border: 1px solid silver;
+    
 }
-
 .line {
     width: 100%;
     height: 1px;
@@ -120,13 +108,15 @@ a:focus {
 }
 
 #sidebar {
+   
     position: fixed;
     overflow: auto;
     min-width: 250px;
     max-width: 250px;
-    background-color: maroon /*#7386D5*/;
-    color: #fff;
+    background:#7386D5;
+    color:red;
     transition: all 0.3s;
+    height:auto;
 }
 
     #sidebar.active {
@@ -134,8 +124,9 @@ a:focus {
     }
 
     #sidebar .sidebar-header {
-        padding: 20px;
-        background: #6d7fcc;
+        padding: 0px;
+        background:#6d7fcc;
+
     }
 
     #sidebar ul.components {
@@ -227,4 +218,3 @@ a.article:hover {
         display: none;
     }
 }
-

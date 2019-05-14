@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\sidebarController.cs" />
     <Compile Include="Controllers\StudentDBase.cs" />
     <Compile Include="Models\blogpost.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -168,14 +169,28 @@
     <Compile Include="Models\StudentDB.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrap\bootstrap-grid.css" />
+    <Content Include="bootstrap\bootstrap-grid.min.css" />
+    <Content Include="bootstrap\bootstrap-reboot.css" />
+    <Content Include="bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="bootstrap\bootstrap.bundle.js" />
+    <Content Include="bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="bootstrap\bootstrap.css" />
+    <Content Include="bootstrap\bootstrap.js" />
+    <Content Include="bootstrap\bootstrap.min.css" />
+    <Content Include="bootstrap\bootstrap.min.js" />
+    <Content Include="bootstrap\glyphicon.css" />
+    <Content Include="bootstrap\Style.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\StyleSheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="js\jquery-3.1.1.js" />
+    <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -194,6 +209,16 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="bootstrap\bootstrap-grid.css.map" />
+    <Content Include="bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="bootstrap\bootstrap.bundle.js.map" />
+    <Content Include="bootstrap\bootstrap.bundle.min.js.map" />
+    <Content Include="bootstrap\bootstrap.css.map" />
+    <Content Include="bootstrap\bootstrap.js.map" />
+    <Content Include="bootstrap\bootstrap.min.css.map" />
+    <Content Include="bootstrap\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -225,6 +250,9 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Home.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\Sidemenu.cshtml" />
+    <Content Include="Views\sidebar\sidebarLayout.cshtml" />
+    <Content Include="Views\sidebar\sidebarmain.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
