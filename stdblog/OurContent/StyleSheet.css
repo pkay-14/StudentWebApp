@@ -1,9 +1,9 @@
 ﻿@import "https://fonts.googleapis.com/css?family=poppins:300,400,500,600,700";
 body {
-    padding-top: 100px;
+    padding-top: 110px;
     padding-bottom: 20px;
     font-family: 'poppins', sans-serif;
-    background-color: white #fafafa;
+    background-color: lightgray /*#fafafa*/;
 }
 
 p {
@@ -31,11 +31,20 @@ a:focus {
     box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     position: fixed;
     width: 100%;
-    height: 10%;
+    height: 100px;
     padding-top:20px;
     margin: 0;
     overflow: hidden;
 }
+
+
+#imgCSS {
+    height: 70px;
+    width: 70px;
+   
+   
+}
+
 navbar2 {
     padding: 15px 10px;
     background: #fff;
@@ -55,10 +64,14 @@ navbar2 {
     height: 10%;
     display: inline-block;
 }
+.navbar-left {
+    height: 100px;
+}
 
 .navbar-header {
     width: 100%;
     height: 100px;
+    display:inline;
 }
 
 .navbar2 {
@@ -70,6 +83,9 @@ navbar2 {
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
    
+  
+}
+.navbar-brand {
   
 }
     .navbar2:hover {
