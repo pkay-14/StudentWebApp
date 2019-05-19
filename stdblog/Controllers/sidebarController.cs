@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace stdblog.Controllers
 {
-    public class sidebarController : Controller
+    public class SidebarController : Controller
     {
         // GET: sidebar
         public ActionResult Index()
@@ -21,5 +17,6 @@ namespace stdblog.Controllers
         {
             return PartialView();
         }
+      
     }
 }

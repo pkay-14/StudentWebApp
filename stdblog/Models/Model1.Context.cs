@@ -26,8 +26,9 @@ namespace stdblog.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-        public virtual DbSet<Home> home { get; set; }
+    
         public virtual DbSet<blogpost> blogposts { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<profileimg> profileimgs { get; set; }
         public virtual DbSet<tblStudent> tblStudents { get; set; }
     

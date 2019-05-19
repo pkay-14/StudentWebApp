@@ -1,7 +1,10 @@
 ﻿using stdblog.Models;
 using System.Web.Mvc;
-
-
+using System.Data.SqlClient;
+using System.Data;
+using System.Configuration;
+using System.Web.Security;
+using System.Linq;
 
 namespace stdblog.Controllers
 {
@@ -15,12 +18,7 @@ namespace stdblog.Controllers
 
         public ActionResult LoginRegister(LoginRegisterVM model, string sReturnURL)
         {
-            //flags that you are using Login Action
-
-            //model.IsActionLogin();
-            //process your login logic here
             return View(model);
-
         }
 
         [HttpPost]
@@ -30,38 +28,78 @@ namespace stdblog.Controllers
         public ActionResult Login(LoginRegisterVM model, string sReturnURL)
         {
             //flags that you are using Login Action
-
             model.IsActionLogin();
-            //process your login logic here
+
             if (ModelState.IsValid)
             {
+                var login = new Login();
+                var dbase = new tblStudent();
+                //login.Username = model.loginvm.Username;
+                //login.Password = model.loginvm.Password;
+                using (studentDBase studentDBase = new studentDBase())
+                {
+                    if (studentDBase.tblStudents.Any(x => x.User__Name == model.loginvm.Username) && studentDBase.tblStudents.Any(x => x.Password == model.loginvm.Password))
+                    {
+                        return RedirectToAction("Home");
+                    }
+                    else  ModelState.AddModelError("","Incorrect Username or Password ");
+                    return View(model);
+                }
                
-                return View("Home");
             }
             else return View(model);
 
          }
-
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Route("Account/Register")]
         public ActionResult Register(LoginRegisterVM model, string sReturnURL)
         {
-            //flags that you are using Login Action
-
+            //flags that you are using Register Action
             model.IsActionRegister();
-            //process your login logic here
+
             if (ModelState.IsValid)
             {
-                return View("Home");
 
+                var tblStud = new tblStudent();
+                //RegisterVM registerVM = new RegisterVM();
+                using (studentDBase studentDBase = new studentDBase())
+                {
+                    if (studentDBase.tblStudents.Any(x => x.User__Name == model.registervm.Username))
+                    {
+
+                     ModelState.AddModelError("", " Username already exists! ");
+                        return View(model);
+                    }
+                    tblStud.Country = model.registervm.Country;
+                    tblStud.Email = model.registervm.Email;
+                    tblStud.First_Name = model.registervm.Name;
+                    tblStud.Last_Name = model.registervm.Surname;
+                    tblStud.Password = model.registervm.Password;
+                    tblStud.User__Name = model.registervm.Username;
+
+                    studentDBase.tblStudents.Add(tblStud);
+                    studentDBase.SaveChanges();
+                    return RedirectToAction("Home");
+                    
+                  
+                  
+
+                }
             }
-           else return View(model);
-
+                 else return View(model);
         }
 
-       
+        public ActionResult BlogAction()
+        {
+            return View();
+        }
 
     }
 

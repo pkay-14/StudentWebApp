@@ -7,7 +7,7 @@ namespace stdblog.Models
 {
     public class LoginRegisterVM
     {
-
+        public tblStudent tblStudent { get; set; }
         public RegisterVM registervm { get; set; }
         public LoginVM loginvm { get; set; }
 

@@ -129,15 +129,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\sidebarController.cs" />
+    <Compile Include="Controllers\SidebarController.cs" />
     <Compile Include="Controllers\StudentDBase.cs" />
-    <Compile Include="Models\blogpost.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\blogpost.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Home.cs" />
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginRegisterVM.cs" />
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\Model1.Context.cs">
@@ -159,13 +162,13 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegisterVM.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\searchuser_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblStudent.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\StudentDB.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,12 +189,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="OurContent\StyleSheet.css" />
-    <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
-    <Content Include="js\jquery-3.1.1.js" />
-    <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -202,6 +199,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="OurContent\StyleSheet.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="js\jquery-3.1.1.js" />
+    <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="Images\avatar.png" />
     <Content Include="Images\bckimg.jpg" />
     <Content Include="Images\dp2.jpg" />
@@ -211,12 +214,6 @@
     <Content Include="Images\SWAVE2.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="bootstrap\bootstrap-grid.css.map" />
     <Content Include="bootstrap\bootstrap-grid.min.css.map" />
     <Content Include="bootstrap\bootstrap-reboot.css.map" />
@@ -227,6 +224,13 @@
     <Content Include="bootstrap\bootstrap.js.map" />
     <Content Include="bootstrap\bootstrap.min.css.map" />
     <Content Include="bootstrap\bootstrap.min.js.map" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -260,6 +264,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\sidebar\sidebarLayout.cshtml" />
     <Content Include="Views\sidebar\sidebarmain.cshtml" />
+    <Content Include="Views\Account\BlogAction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

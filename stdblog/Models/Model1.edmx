@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="studentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="studentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="blogposts">
           <Key>
             <PropertyRef Name="id" />
@@ -83,7 +83,8 @@
           <EntitySet Name="profileimg" EntityType="Self.profileimg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblStudents" EntityType="Self.tblStudents" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="studentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -97,6 +98,14 @@
           <Property Name="datemodified" Type="DateTime" Precision="3" />
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="postimage" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="profileimg">
           <Key>
@@ -120,6 +129,7 @@
         </EntityType>
         <EntityContainer Name="studentDBase" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="blogposts" EntityType="Self.blogpost" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
           <EntitySet Name="profileimgs" EntityType="Self.profileimg" />
           <EntitySet Name="tblStudents" EntityType="Self.tblStudent" />
           <FunctionImport Name="addposts">
@@ -134,7 +144,7 @@
             <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="searchuser" ReturnType="Collection(studentDBModel.searchuser_Result)">
-          <Parameter Name="searchvalue" Mode="In" Type="String" />
+            <Parameter Name="searchvalue" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="StdProcedure">
             <Parameter Name="FN" Mode="In" Type="String" />
@@ -149,13 +159,12 @@
             <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="uploadprocedure" ReturnType="Collection(Binary)">
-          <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="validator" ReturnType="Collection(Int32)">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="userpassword" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Logins" EntityType="studentDBModel.Login" />
         </EntityContainer>
         <ComplexType Name="searchuser_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -166,14 +175,6 @@
           <Property Type="String" Name="Password" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Country" Nullable="false" MaxLength="100" />
         </ComplexType>
-        <EntityType Name="Login">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -189,6 +190,15 @@
                 <ScalarProperty Name="datemodified" ColumnName="datemodified" />
                 <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="postimage" ColumnName="postimage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="studentDBModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -233,15 +243,6 @@
           <FunctionImportMapping FunctionImportName="updateimgprocedure" FunctionName="studentDBModel.Store.updateimgprocedure" />
           <FunctionImportMapping FunctionImportName="uploadprocedure" FunctionName="studentDBModel.Store.uploadprocedure" />
           <FunctionImportMapping FunctionImportName="validator" FunctionName="studentDBModel.Store.validator" />
-          <EntitySetMapping Name="Logins">
-            <EntityTypeMapping TypeName="studentDBModel.Login">
-              <MappingFragment StoreEntitySet="Login">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body style="padding-top:110px; background-color:lightgray" >
+<body style="padding-top:110px; background-color:whitesmoke" >
     <div class="navbar navbar-fixed-top" style=" padding: 15px 10px; background-color:black; height:100px">
         <div class="container-fluid" style="height:100px; width:100%">
             @*<div class="row  col-lg-12">*@
@@ -18,26 +18,29 @@
                         <i class="fa fa-align-justify"></i> <span>Menu</span>
                     </button>
 
-                   
+
                     @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        <span class="navbar-toggler-icon"></span>
-                        <span class="navbar-toggler-icon"></span>
-                    </button>*@
-                  
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>*@
+
                 </div>
-              
+
                 <div class="col-sm-10">
 
                     <img id="imgcss" style="float:left; height:70px;  width:50px" src="~/images/SWAVE2.png" alt="image paceholder" />
                     @*<a href="#" class="navbar-brand" style="color:white">S-WAVE</a>*@
 
-                    <img class="rounded-circle" id="imgcss"  style="float:right; height:70px;  width:50px" src="~/images/profilpic.jpg" alt="image paceholder" />
+                    <img class="rounded-circle" id="imgcss" style="float:right; height:70px;  width:50px" src="~/images/profilpic.jpg" alt="image paceholder" />
 
                 </div>
 
 
-                <a href="/Account/LoginRegister.cshtml" class=" navbar-brand" style="float:right; padding-top:15px; color:white">Logout</a>
+                @*<a href="/Account/LoginRegister.cshtml" class=" navbar-brand" style="float:right; padding-top:15px; color:white">Logout</a>*@
+                <div class=" navbar-brand" style="float:right; padding-top:15px; color:white">
+                    @Html.ActionLink("Logout", "LoginRegister", "Account")
+                </div>
                 @*<div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
             @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
